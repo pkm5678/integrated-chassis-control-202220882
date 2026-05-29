@@ -45,10 +45,12 @@ TIRE.E  = -0.5;    % Curvature factor
 TIRE.mu_peak = 1.0;  % 최대 마찰 계수
 
 %% 제어기 파라미터 — 횡방향 (Lateral)
-CTRL.LAT.Kp     = 1.0;     % 비례 게인
-CTRL.LAT.Ki     = 0.1;     % 적분 게인
+CTRL.LAT.Kp     = 0.30;    % 비례 게인
+CTRL.LAT.Ki     = 0.00;    % 적분 게인
 CTRL.LAT.Kd     = 0.05;    % 미분 게인
 CTRL.LAT.intMax = 5.0;     % 적분 안티와인드업 한계 [rad]
+CTRL.LAT.yawMomentMax = 4200;       % [Nm] ESC yaw moment limit
+CTRL.LAT.yawMomentRateMax = 2.4e5;  % [Nm/s] ESC rate limit
 
 %% 제어기 파라미터 — 종방향 (Longitudinal)
 CTRL.LON.Kp     = 0.5;     % 비례 게인
@@ -65,6 +67,8 @@ CTRL.COORD.wLat  = 1.0;    % 횡방향 가중치
 CTRL.COORD.wLon  = 1.0;    % 종방향 가중치
 CTRL.COORD.wVer  = 0.5;    % 수직 가중치
 CTRL.COORD.wEff  = 0.1;    % 에너지 효율 가중치
+CTRL.COORD.escFrontRatio = 0.62;  % ESC yaw allocation front share
+CTRL.COORD.escBrakeCap   = 1350;  % [Nm] per-wheel additive ESC cap
 
 %% 액추에이터 한계
 LIM.MAX_STEER_ANGLE = deg2rad(540 / 15);  % [rad] 최대 로드휠 조향각 (SW 540deg / ratio 15)
